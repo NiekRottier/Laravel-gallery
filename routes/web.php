@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/laravel-welcome', function () {
     return view('welcome');
 });
+
+Route::get('/', [PostsController::class, 'index'])->name('index');
+
+Route::get('/posts/{post}', [PostsController::class, 'posts'])->name('posts');
+
+Route::get('/create', [PostsController::class, 'create'])->name('create');
