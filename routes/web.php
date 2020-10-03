@@ -20,6 +20,6 @@ Route::get('/laravel-welcome', function () {
 
 Route::get('/', [PostsController::class, 'index'])->name('index');
 
-Route::get('/posts/{post}', [PostsController::class, 'posts'])->name('posts');
+Route::get('/posts/{id}', [PostsController::class, 'posts'])->name('posts');
 
 Route::get('/create', [PostsController::class, 'create'])->name('create');

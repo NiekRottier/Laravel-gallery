@@ -8,7 +8,8 @@
     <title>Post</title>
 </head>
 <body>
-<h1>Welcome to the post {{$post}}!</h1>
+<h1>Welcome to the post "{{ $post->title }}"!</h1>
+<p>{{ $post->description }}</p>
 <a href="{{ route('index') }}">Homepage</a>
 </body>
 </html>
