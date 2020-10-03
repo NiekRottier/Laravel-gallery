@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,19 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/laravel-welcome', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('index');
+})->name('index');
+
+Route::name('posts.')->group(function() {
+    Route::prefix('posts')->group(function() {
+        Route::get('/create', [PostsController::class, 'create'])->name('create');
+        Route::get('/post/{id}', [PostsController::class, 'post'])->name('post');
+    });
 });
 
-Route::get('/', [PostsController::class, 'index'])->name('index');
-
-Route::get('/posts/{id}', [PostsController::class, 'posts'])->name('posts');
-
-Route::get('/create', [PostsController::class, 'create'])->name('create');
+Route::name('account.')->group(function() {
+    Route::prefix('account')->group(function() {
+        Route::get('/create', [AccountController::class, 'create'])->name('create');
+    });
+});

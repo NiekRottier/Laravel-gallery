@@ -9,10 +9,12 @@
 </head>
 <body>
 <h1>Welcome to the homepage!</h1>
-<a href="{{ route('create') }}">Create</a>
-<a href="{{ route('posts', 1) }}">Post 1</a>
-<a href="{{ route('posts', 2) }}">Post 2</a>
-<a href="{{ route('posts', 3) }}">Post 3</a>
+<a href="{{ route('posts.create') }}">Create post</a>
+<a href="{{ route('account.create') }}">Create account</a>
+
+<a href="{{ route('posts.post', 1) }}">Post 1</a>
+<a href="{{ route('posts.post', 2) }}">Post 2</a>
+<a href="{{ route('posts.post', 3) }}">Post 3</a>
 
 </body>
 </html>

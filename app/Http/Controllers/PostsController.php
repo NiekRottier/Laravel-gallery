@@ -9,22 +9,17 @@ use App\Models\Posts;
 
 class PostsController extends Controller
 {
-    public function index()
-    {
-        return view('posts/index');
-    }
-
-    public function posts($id)
+    public function post($id)
     {
         $post = Posts::findOrFail($id);
 
-        return view('posts/post', [
+        return view('posts.post', [
             'post' => $post
         ]);
     }
 
     public function create()
     {
-        return view('posts/create');
+        return view('posts.create');
     }
 }
