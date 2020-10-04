@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,8 @@ Route::name('posts.')->group(function() {
     });
 });
 
-Route::name('account.')->group(function() {
-    Route::prefix('account')->group(function() {
-        Route::get('/create', [AccountController::class, 'create'])->name('create');
+Route::name('users.')->group(function() {
+    Route::prefix('users')->group(function() {
+        Route::get('/create', [UsersController::class, 'create'])->name('create');
     });
 });

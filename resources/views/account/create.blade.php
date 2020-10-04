@@ -1,14 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create account</title>
-</head>
-<body>
-<h1>Create account</h1>
-<a href="{{ route('index') }}">Homepage</a>
-</body>
-</html>
+@extends ('layout')
+
+@section ('content')
+    <h1>Create account</h1>
+@endsection

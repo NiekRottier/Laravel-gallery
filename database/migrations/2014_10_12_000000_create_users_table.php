@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('num_of_posts');
-            $table->integer('num_of_comments');
+            $table->integer('num_of_posts')->default(0);
+            $table->integer('num_of_comments')->default(0);
             $table->timestamps();
         });
     }
