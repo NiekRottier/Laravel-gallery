@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use App\Models\Posts;
 
 class PostsController extends Controller
 {
-    public function post($id)
+    public function showPost($id)
     {
         $post = Posts::findOrFail($id);
 
@@ -18,7 +18,7 @@ class PostsController extends Controller
         ]);
     }
 
-    public function create()
+    public function showCreate()
     {
         return view('posts.create');
     }
