@@ -77,6 +77,11 @@ header{
     text-decoration: underline;
 }
 
+.current-page{
+    font-weight: bold;
+    text-decoration: underline !important;
+}
+
 /* Footer */
 footer{
     position: static;
