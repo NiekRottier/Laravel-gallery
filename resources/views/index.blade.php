@@ -9,7 +9,7 @@
             <div class="card">
                 <h2>{{ $post->title }}</h2>
                 <img src="{{ $post->image }}" alt="{{ $post->image }}"/>
-                <a href="{{ route('post', 1) }}">Read more..</a>
+                <a href="{{ route('post', $post->id) }}">Read more..</a>
             </div>
         @endforeach
     </div>
