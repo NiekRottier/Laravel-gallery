@@ -26,8 +26,9 @@ Route::prefix('posts')->group(function() {
 });
 
 
-Route::name('users.')->group(function() {
-    Route::prefix('users')->group(function() {
-        Route::get('/create', [UsersController::class, 'create'])->name('create');
-    });
+Route::prefix('users')->group(function() {
+    Route::get('/', [UsersController::class, 'index'])->name('users.index');
+    Route::post('/', [UsersController::class, 'store']);
+    Route::get('/create', [UsersController::class, 'create'])->name('users.create');
+    Route::get('/{id}', [UsersController::class, 'show'])->name('user');
 });
