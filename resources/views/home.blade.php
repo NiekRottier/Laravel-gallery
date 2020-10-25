@@ -8,7 +8,7 @@
         @foreach($posts as $post)
             <div class="card">
                 <h2>{{ $post->title }}</h2>
-                <img src="{{ $post->image }}" alt="{{ $post->image }}"/>
+                <img src="{{ $post->img }}" alt="{{ $post->img }}"/>
                 <a href="{{ route('post', $post->id) }}">Read more..</a>
             </div>
         @endforeach

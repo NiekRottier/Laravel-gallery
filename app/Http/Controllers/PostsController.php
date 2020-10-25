@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
-    public function showPost($id)
+    public function show($id)
     {
         $post = Posts::findOrFail($id);
 
@@ -18,8 +18,42 @@ class PostsController extends Controller
         ]);
     }
 
-    public function showCreate()
+    public function index()
+    {
+        $posts = Posts::all()->sortByDesc('created_at');
+
+        return view('home', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function create()
     {
         return view('posts.create');
+    }
+
+    public function store()
+    {
+        $post = new Posts();
+
+        $post->title = request('title');
+        $post->descr = request('descr');
+        $post->img = request('img');
+
+        $post->user_id = request('user_id');
+
+        $post->save();
+
+        return redirect('/');
+    }
+
+    public function edit()
+    {
+
+    }
+
+    public function destroy()
+    {
+
     }
 }

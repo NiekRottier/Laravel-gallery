@@ -16,24 +16,18 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function ()
-{
-    $posts = Posts::all()->sortByDesc('created_at');
-
-    return view('index', [
-        'posts' => $posts
-    ]);
-})->name('index');
+Route::get('/', [PostsController::class, 'index'])->name('home');
 
 
 Route::prefix('posts')->group(function() {
-    Route::get('/create', [PostsController::class, 'showCreate'])->name('posts.create');
-    Route::get('/{id}', [PostsController::class, 'showPost'])->name('post');
+    Route::post('/', [PostsController::class, 'store']);
+    Route::get('/create', [PostsController::class, 'create'])->name('posts.create');
+    Route::get('/{id}', [PostsController::class, 'show'])->name('post');
 });
 
 
 Route::name('users.')->group(function() {
     Route::prefix('users')->group(function() {
-        Route::get('/create', [UsersController::class, 'showCreate'])->name('create');
+        Route::get('/create', [UsersController::class, 'create'])->name('create');
     });
 });
