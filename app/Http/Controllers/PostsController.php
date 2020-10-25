@@ -47,9 +47,28 @@ class PostsController extends Controller
         return redirect('/');
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $post = Posts::findOrFail($id);
 
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function update($id)
+    {
+        $post = Posts::findOrFail($id);
+
+        $post->title = request('title');
+        $post->descr = request('descr');
+        $post->img = request('img');
+
+        $post->user_id = request('user_id');
+
+        $post->save();
+
+        redirect('/posts/' . $post->id);
     }
 
     public function destroy()

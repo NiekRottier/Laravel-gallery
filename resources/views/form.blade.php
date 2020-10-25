@@ -18,7 +18,9 @@
         <a href="{{ url()->previous() }}" id="back"> &lt; Back </a>
     </header>
 
-    @yield ('content')
+    <div class="content">
+        @yield ('content')
+    </div>
 
     <footer>
         <p>Created by Niek Rottier</p>

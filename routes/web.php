@@ -18,13 +18,13 @@ use App\Http\Controllers\UsersController;
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
-
 Route::prefix('posts')->group(function() {
     Route::post('/', [PostsController::class, 'store']);
     Route::get('/create', [PostsController::class, 'create'])->name('posts.create');
     Route::get('/{id}', [PostsController::class, 'show'])->name('post');
+    Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('post.edit');
+    Route::put('/{id}', [PostsController::class, 'update']);
 });
-
 
 Route::prefix('users')->group(function() {
     Route::get('/', [UsersController::class, 'index'])->name('users.index');
