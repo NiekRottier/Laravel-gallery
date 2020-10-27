@@ -9,6 +9,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6897fd4fab.js" crossorigin="anonymous"></script>
 
     <title>Laravel Gallery - Form</title>
 </head>

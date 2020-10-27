@@ -11,7 +11,7 @@ header {
   left: 0;
   padding: 1.2%;
   z-index: 1;
-  background-color: #ffb3b3;
+  background-color: #ca1d1d;
   opacity: 0.95;
   box-shadow: #1b3118 0 0 50px;
 }
@@ -37,13 +37,12 @@ header #nav li .current-page {
 }
 
 header #nav a {
-  color: black;
   text-decoration: none;
   text-wrap: none;
 }
 
 header #nav a:hover {
-  color: #4d4d4d;
+  color: #b7b7b7;
   text-decoration: underline;
 }
 
@@ -66,8 +65,8 @@ header #nav a:hover {
   width: 27vw;
   height: 27vw;
   margin-bottom: 3%;
-  background-color: #dae8fa;
-  border-top: solid 5px black;
+  background-color: #130f47;
+  border-top: solid 5px #981717;
   border-bottom-left-radius: 10%;
   border-bottom-right-radius: 10%;
 }
@@ -94,6 +93,87 @@ header #nav a:hover {
   text-overflow: ellipsis;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form .field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 2%;
+}
+
+form .field label {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+form .field input[type=text],
+form .field input[type=password] {
+  width: 100%;
+  height: 5vh;
+  padding: 5px;
+  background-color: #130f47;
+  border: solid 1px black;
+  border-radius: 6px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+form .field input[type=file] {
+  display: none;
+}
+
+form .field #fileUpload {
+  width: 100%;
+  height: 8rem;
+  padding: 0.5rem;
+  background-color: #130f47;
+  border: solid 1px black;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form .field #fileUpload i {
+  display: block;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+form .field .errorField {
+  border: solid 2px #b80000 !important;
+}
+
+form .field .errorText {
+  color: #b80000 !important;
+}
+
+form button[type=submit] {
+  width: 40%;
+  height: 7vh;
+  margin-top: 3%;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  background-color: #130f47;
+  border: solid 1px #ca1d1d;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -103,23 +183,26 @@ header #nav a:hover {
 body {
   height: 100vh;
   min-height: 100vh;
-  background-color: #d9fff4;
+  background-color: #08071f;
   display: flex;
   flex-direction: column;
 }
 
 /* Fonts */
 
-body > h1,
-body > h2,
-body > p {
-  margin: 0 2%;
+h1,
+h2,
+p,
+a,
+li {
+  color: white;
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 5rem;
+  text-align: center;
 }
 
 h2 {
@@ -133,6 +216,7 @@ a {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 1.2rem;
+  word-wrap: break-word;
 }
 
 /* Footer */
@@ -149,6 +233,6 @@ footer {
   left: 0;
   padding: 1.2%;
   margin-top: auto;
-  background-color: #ffb3b3;
+  background-color: #ca1d1d;
 }
 

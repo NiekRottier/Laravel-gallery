@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./header";
 @import "./cards";
+@import "./forms";
 
 *{
     box-sizing: border-box;
@@ -17,14 +18,15 @@ body{
 }
 
 /* Fonts */
-body > h1, body > h2, body > p{
-    margin: 0 2%;
+h1, h2, p, a, li{
+    color: $textColor
 }
 
 h1{
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 5rem;
+    text-align: center;
 }
 
 h2{
@@ -37,6 +39,7 @@ p, a{
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 1.2rem;
+    word-wrap: break-word;
 }
 
 /* Footer */

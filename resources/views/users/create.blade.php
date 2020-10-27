@@ -1,6 +1,6 @@
-@extends ('form')
+@extends('form')
 
-@section ('content')
+@section('content')
     <h1>Create account</h1>
 
     <form method="post" action="/users">
@@ -18,6 +18,13 @@
             <input type="password" name="password" placeholder="Password here..">
         </div>
 
+        <div class="field">
+            <label for="user_id">Confirm password</label>
+
+            <input type="password" name="repeatPassword" placeholder="Repeat password here..">
+        </div>
+
         <button type="submit">Submit!</button>
     </form>
+    <a href="{{ route('users.login') }}">Already got an account?</a>
 @endsection

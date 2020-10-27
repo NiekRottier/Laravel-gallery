@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    public function login()
+    {
+        $users = Users::all()->sortByDesc('created_at');
+
+        return view('users.login', [
+            'users' => $users
+        ]);
+    }
+
     public function show($id)
     {
         $user = Users::findOrFail($id);

@@ -22,7 +22,7 @@
         <div class="field">
             <label for="img">Image</label>
 
-            <input type="file" name="img" value="{{ $post->img }}">
+            <input type="file" accept="image/*" name="img" value="{{ $post->img }}">
         </div>
 
         <div class="field">

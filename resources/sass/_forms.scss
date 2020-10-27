@@ -1,0 +1,89 @@
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .field{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 60%;
+        margin-top: 2%;
+
+        label{
+            color: $textColor;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.5rem;
+        }
+
+        input[type=text], input[type=password]{
+            width: 100%;
+            height: 5vh;
+
+            padding: 5px;
+
+            background-color: $backgroundItems;
+            border: solid 1px black;
+            border-radius: 6px;
+
+            color: $textColor;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: 1rem;
+        }
+
+        input[type=file]{
+            display: none;
+        }
+
+        #fileUpload{
+            width: 100%;
+            height: 8rem;
+            padding: 0.5rem;
+
+            background-color: $backgroundItems;
+            border: solid 1px black;
+            border-radius: 6px;
+
+            text-align: center;
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            i{
+                display: block;
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .errorField{
+            border: solid 2px $errorColor !important;
+        }
+
+        .errorText{
+            color: $errorColor !important;
+        }
+    }
+
+    button[type=submit]{
+        width: 40%;
+        height: 7vh;
+        margin-top: 3%;
+
+        color: $textColor;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 1.4rem;
+
+        background-color: $backgroundItems;
+        border: solid 1px $colorHeaderFooter;
+        border-radius: 6px;
+
+        cursor: pointer;
+    }
+}

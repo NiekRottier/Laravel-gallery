@@ -1,9 +1,7 @@
 @extends ('layout')
 
 @section ('content')
-    <h1>Welcome to the homepage!</h1>
 
-    <h2>Posts</h2>
     <div id="card-box">
         @foreach($posts as $post)
             <div class="card">

@@ -20,4 +20,5 @@
 
         <button type="submit">Submit!</button>
     </form>
+    <a href="{{ route('users.create') }}">Don&#39;t have an account yet?</a>
 @endsection

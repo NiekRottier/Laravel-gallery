@@ -9,6 +9,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6897fd4fab.js" crossorigin="anonymous"></script>
 
     <title>Laravel Gallery</title>
 </head>
@@ -17,7 +18,7 @@
         <p id="logo">Laravel<br />Gallery</p>
         <ul id="nav">
             <li><a class="{{ \Illuminate\Support\Facades\Request::path() === '/' ? 'current-page' : '' }}" href="{{ route('home') }}">Home</a></li>
-            <li><a class="{{ \Illuminate\Support\Facades\Request::path() === '/user*' ? 'current-page' : '' }}" href="{{ route('users.create') }}">Login</a></li>
+            <li><a class="{{ \Illuminate\Support\Facades\Request::path() === 'users/login' ? 'current-page' : '' }}" href="{{ route('users.login') }}">Login</a></li>
             <li><a href="{{ route('posts.create') }}">Create Post</a></li>
         </ul>
     </header>
