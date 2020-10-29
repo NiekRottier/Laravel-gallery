@@ -69,6 +69,7 @@ class UsersController extends Controller
     public function update($user_id)
     {
         $user = Users::findOrFail($user_id);
+        $oldPassword = $user->password;
 
         request()->validate([
             'username' => 'required|min:3|max:255|unique:users,username,' . $user->id,
@@ -82,7 +83,7 @@ class UsersController extends Controller
             $user->password = request('newPassword');
         }
 
-        if (request('password') == $user->password){ $user->save(); } // NEEDS TO BE CHANGED TO A GOOD CHECK
+        if (request('password') == $oldPassword){ $user->save(); } // NEEDS TO BE CHANGED TO A GOOD CHECK
 
 
         return redirect('/users/' . $user->id);
