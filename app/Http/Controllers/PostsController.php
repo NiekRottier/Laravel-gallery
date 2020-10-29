@@ -35,8 +35,8 @@ class PostsController extends Controller
     public function store()
     {
         request()->validate([
-            'title' => 'required|min:5|max:255',
-            'descr' => 'max:255|',
+            'title' => 'required|min:3|max:255',
+            'descr' => 'max:255',
             'img' => 'required',
             'user_id' => 'required'
         ]);
@@ -65,11 +65,16 @@ class PostsController extends Controller
 
     public function update($id)
     {
+        request()->validate([
+            'title' => 'required|min:3|max:255',
+            'descr' => 'max:255',
+            'user_id' => 'required'
+        ]);
+
         $post = Posts::findOrFail($id);
 
         $post->title = request('title');
         $post->descr = request('descr');
-        $post->img = request('img');
 
         $post->user_id = request('user_id');
 
