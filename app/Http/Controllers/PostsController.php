@@ -36,8 +36,8 @@ class PostsController extends Controller
     {
         request()->validate([
             'title' => 'required|min:3|max:255',
-            'descr' => 'max:255',
-            'img' => 'required',
+            'descr' => 'nullable|max:255',
+            'img' => 'required|image|max:8000|dimensions:min_width=200,min_height=200',
             'user_id' => 'required'
         ]);
 

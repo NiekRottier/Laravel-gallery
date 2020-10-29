@@ -7,24 +7,36 @@
         @csrf
 
         <div class="field">
-            <label for="title">Username</label>
+            <label for="title">Username
+                <input class="@error('username') errorField @enderror" type="text" name="username" placeholder="Username here..">
+            </label>
 
-            <input type="text" name="username" placeholder="Username here..">
+            @error('username')
+                <p class="errorText">{{ $errors->first('username') }}</p>
+            @enderror
         </div>
 
         <div class="field">
-            <label for="user_id">Password</label>
+            <label for="user_id">Password
+                <input class="@error('password') errorField @enderror" type="password" name="password" placeholder="Password here..">
+            </label>
 
-            <input type="password" name="password" placeholder="Password here..">
+            @error('password')
+                <p class="errorText">{{ $errors->first('password') }}</p>
+            @enderror
         </div>
 
         <div class="field">
-            <label for="user_id">Confirm password</label>
+            <label for="user_id">Confirm password
+                <input class="@error('repeatPassword') errorField @enderror" type="password" name="repeatPassword" placeholder="Repeat password here..">
+            </label>
 
-            <input type="password" name="repeatPassword" placeholder="Repeat password here..">
+            @error('repeatPassword')
+                <p class="errorText">{{ $errors->first('repeatPassword') }}</p>
+            @enderror
         </div>
 
-        <button type="submit">Submit!</button>
+        <button type="submit">Register!</button>
     </form>
     <a href="{{ route('users.login') }}">Already got an account?</a>
 @endsection
