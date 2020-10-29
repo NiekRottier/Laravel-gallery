@@ -37,6 +37,6 @@
             </label>
         </div>
 
-        <button type="submit">Submit!</button>
+        <button type="submit">Update!</button>
     </form>
 @endsection

@@ -7,7 +7,7 @@
         @csrf
 
         <div class="field">
-            <label for="title">Username
+            <label for="username">Username
                 <input class="@error('username') errorField @enderror" type="text" name="username" placeholder="Username here..">
             </label>
 
@@ -17,7 +17,7 @@
         </div>
 
         <div class="field">
-            <label for="user_id">Password
+            <label for="password">Password
                 <input class="@error('password') errorField @enderror" type="password" name="password" placeholder="Password here..">
             </label>
 
@@ -27,7 +27,7 @@
         </div>
 
         <div class="field">
-            <label for="user_id">Confirm password
+            <label for="repeatPassword">Confirm password
                 <input class="@error('repeatPassword') errorField @enderror" type="password" name="repeatPassword" placeholder="Repeat password here..">
             </label>
 

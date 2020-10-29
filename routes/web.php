@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Posts;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
@@ -32,4 +31,6 @@ Route::prefix('users')->group(function() {
     Route::post('/', [UsersController::class, 'store']);
     Route::get('/create', [UsersController::class, 'create'])->name('users.create');
     Route::get('/{id}', [UsersController::class, 'show'])->name('user');
+    Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/{id}', [UsersController::class, 'update']);
 });

@@ -110,6 +110,7 @@ form .field {
 }
 
 form .field label {
+  width: 100%;
   color: white;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
@@ -218,6 +219,7 @@ a {
   font-weight: 300;
   font-size: 1.2rem;
   word-wrap: break-word;
+  text-align: center;
 }
 
 /* Footer */
