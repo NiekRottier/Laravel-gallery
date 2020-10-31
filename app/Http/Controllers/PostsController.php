@@ -37,7 +37,7 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required|min:3|max:255',
             'descr' => 'nullable|max:255',
-            'img' => 'required|ends_with:.jpg',
+            'img' => 'required|ends_with:.jpg,.jpeg,.png,.gif',
             'user_id' => 'required'
         ]);
 

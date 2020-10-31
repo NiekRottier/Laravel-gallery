@@ -19,21 +19,23 @@ Route::get('/', [PostsController::class, 'index'])->name('home');
 
 Route::prefix('posts')->group(function() {
     Route::post('/', [PostsController::class, 'store']);
-    Route::get('/create', [PostsController::class, 'create'])->name('posts.create');
+    Route::get('/create', [PostsController::class, 'create'])->name('posts.create')->middleware('auth');
     Route::get('/{id}', [PostsController::class, 'show'])->name('post');
-    Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('post.edit');
+    Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('post.edit')->middleware('auth');
     Route::put('/{id}', [PostsController::class, 'update']);
 });
 
 Route::prefix('users')->group(function() {
     Route::get('/login', [UsersController::class, 'login'])->name('users.login');
-    Route::get('/', [UsersController::class, 'index'])->name('users.index');
+    Route::post('/login', [UsersController::class, 'authenticate']);
+    Route::get('/logout', [UsersController::class, 'logout']);
+
+    Route::get('/', [UsersController::class, 'index'])->name('users.index')->middleware('auth');
     Route::post('/', [UsersController::class, 'store']);
     Route::get('/create', [UsersController::class, 'create'])->name('users.create');
-    Route::get('/{id}', [UsersController::class, 'show'])->name('user');
-    Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+    Route::get('/{id}', [UsersController::class, 'show'])->name('user')->middleware('auth');
+    Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit')->middleware('auth');
     Route::put('/{id}', [UsersController::class, 'update']);
-    Route::post('/login', [UsersController::class, 'authenticate']);
 });
 
 Route::get('/passwordError', function (){

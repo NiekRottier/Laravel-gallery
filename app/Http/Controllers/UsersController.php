@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,16 @@ class UsersController extends Controller
         } else {
             return redirect('/passwordError');
         }
+    }
+
+    public function logout()
+    {
+        $posts = Post::all()->sortByDesc('created_at');
+
+        Auth::logout();
+
+        return view('home');
+
     }
 
     public function show($id)
