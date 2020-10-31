@@ -53,12 +53,17 @@ p, a{
 
 img{
     display: block;
-    max-width: 80vw;
-    max-height: 90vh;
+    max-width: 60vw;
+    max-height: 70vh;
     margin: 2.5% auto;
 }
 
-/* Footer */
+.editPostImg{
+    max-width: 60vw;
+    max-height: 70vh;
+}
+
+// Footer
 footer{
     position: static;
     display: flex;

@@ -35,19 +35,17 @@ class UsersController extends Controller
     {
         Auth::logout();
 
-        $posts = Post::all()->sortByDesc('created_at');
-        return view('home', [
-            'posts' => $posts
-        ]);
-
+        return redirect('/');
     }
 
     public function show($id)
     {
         $user = User::findOrFail($id);
+        $posts = Post::whereUserId($id)->get();
 
         return view('users.user', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,10 @@ class PostsController extends Controller
 
         $post->save();
 
+        $user = User::whereId(Auth::id())->first();
+        $user->num_of_posts++;
+        $user->save();
+
         return redirect('/');
     }
 
@@ -67,16 +72,13 @@ class PostsController extends Controller
     {
         request()->validate([
             'title' => 'required|min:3|max:255',
-            'descr' => 'max:255',
-            'user_id' => 'required'
+            'descr' => 'max:255'
         ]);
 
         $post = Post::findOrFail($id);
 
         $post->title = request('title');
         $post->descr = request('descr');
-
-        $post->user_id = request('user_id');
 
         $post->save();
 
