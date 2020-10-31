@@ -46,11 +46,11 @@
 {{--            @enderror--}}
 {{--        </div>--}}
 
-        <div class="field">
-            <label for="user_id">User ID&#42;
-                <input type="text" name="user_id" value="1">
-            </label>
-        </div>
+{{--        <div class="field">--}}
+{{--            <label for="user_id">User ID&#42;--}}
+{{--                <input type="text" name="user_id" value="1">--}}
+{{--            </label>--}}
+{{--        </div>--}}
 
         <button type="submit">Submit!</button>
     </form>

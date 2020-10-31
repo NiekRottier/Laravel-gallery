@@ -33,11 +33,12 @@ class UsersController extends Controller
 
     public function logout()
     {
-        $posts = Post::all()->sortByDesc('created_at');
-
         Auth::logout();
 
-        return view('home');
+        $posts = Post::all()->sortByDesc('created_at');
+        return view('home', [
+            'posts' => $posts
+        ]);
 
     }
 

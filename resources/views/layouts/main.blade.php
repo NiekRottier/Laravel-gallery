@@ -17,8 +17,8 @@
     <header>
         <p id="logo">Laravel<br />Gallery</p>
         <ul id="nav">
-            <li><a class="{{ \Illuminate\Support\Facades\Request::path() === '/' ? 'current-page' : '' }}" href="{{ route('home') }}">Home</a></li>
-            <li><a class="{{ \Illuminate\Support\Facades\Request::path() === 'users/login' ? 'current-page' : '' }}" href="{{ route('users.login') }}">Login</a></li>
+            <li><a class="{{ Request::path() === '/' ? 'current-page' : '' }}" href="{{ route('home') }}">Home</a></li>
+            <li><a class="{{ Request::path() === 'users/login' ? 'current-page' : '' }}" href="{{ route('users.login') }}">Login</a></li>
             <li><a href="{{ route('posts.create') }}">Create Post</a></li>
             <li><a href="/users/logout">Logout</a></li>
         </ul>

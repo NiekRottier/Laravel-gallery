@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -38,7 +39,6 @@ class PostsController extends Controller
             'title' => 'required|min:3|max:255',
             'descr' => 'nullable|max:255',
             'img' => 'required|ends_with:.jpg,.jpeg,.png,.gif',
-            'user_id' => 'required'
         ]);
 
         $post = new Post();
@@ -47,7 +47,7 @@ class PostsController extends Controller
         $post->descr = $request->input('descr');
         $post->img = $request->input('img');
 
-        $post->user_id = $request->input('user_id');
+        $post->user_id = Auth::id();
 
         $post->save();
 
