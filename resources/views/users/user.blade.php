@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1>{{ $user->username }}</h1>
-    <a href="/users/{{ $user->id }}/edit">Edit username</a>
+    <h1>{{ $selectedUser->username }}</h1>
+    @can('editUser', $selectedUser)
+        <a href="/users/{{ $selectedUser->id }}/edit">Edit username</a>
+    @endcan
 
     <div id="card-box">
         @foreach($posts as $post)

@@ -5,7 +5,7 @@
     <p>{{ $post->descr }}</p>
     <img src="{{ $post->img }}" alt="{{ $post->img }}">
 
-    @if(Auth::id() === $post->user_id)
+    @can('editPost', $post)
         <a href="/posts/{{ $post->id }}/edit">Edit your post</a>
-    @endif
+    @endcan
 @endsection

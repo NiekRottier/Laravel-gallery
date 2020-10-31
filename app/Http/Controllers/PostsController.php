@@ -52,6 +52,7 @@ class PostsController extends Controller
 
         $post->save();
 
+        // Update num_of_posts of user
         $user = User::whereId(Auth::id())->first();
         $user->num_of_posts++;
         $user->save();
@@ -62,6 +63,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+
+        $user = User::whereId($post->user_id)->first();
+        $this->authorize('editPost', $post);
 
         return view('posts.edit', [
             'post' => $post

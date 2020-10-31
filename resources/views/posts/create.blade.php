@@ -36,23 +36,7 @@
             @enderror
         </div>
 
-{{--        <div class="field">--}}
-{{--            <label class="@error('img') errorField @enderror" id="fileUpload" for="img"><i class="fas fa-upload"></i> Upload image--}}
-{{--                <input type="file" accept="image/*" name="img" id="img" />--}}
-{{--            </label>--}}
-
-{{--            @error('img')--}}
-{{--                <p class="errorText">{{ $errors->first('img') }}</p>--}}
-{{--            @enderror--}}
-{{--        </div>--}}
-
-{{--        <div class="field">--}}
-{{--            <label for="user_id">User ID&#42;--}}
-{{--                <input type="text" name="user_id" value="1">--}}
-{{--            </label>--}}
-{{--        </div>--}}
-
-        <button type="submit">Submit!</button>
+        <button type="submit">Create post!</button>
     </form>
 
 @endsection

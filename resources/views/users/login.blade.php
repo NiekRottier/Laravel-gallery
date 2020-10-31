@@ -24,7 +24,7 @@
             @enderror
         </div>
 
-        <button type="submit">Submit!</button>
+        <button type="submit">Login!</button>
     </form>
     <a href="{{ route('users.create') }}">Don&#39;t have an account yet?</a>
 @endsection

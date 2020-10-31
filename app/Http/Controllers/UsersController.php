@@ -44,7 +44,7 @@ class UsersController extends Controller
         $posts = Post::whereUserId($id)->get();
 
         return view('users.user', [
-            'user' => $user,
+            'selectedUser' => $user,
             'posts' => $posts
         ]);
     }
@@ -86,6 +86,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($user_id);
 
+        $this->authorize('editUser', $user);
         return view('users.edit', [
             'user' => $user
         ]);

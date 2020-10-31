@@ -2,7 +2,6 @@
 
 @section('content')
     <h1>Edit "{{ $user->username }}"</h1>
-    <p>If you don't want to change a field, don't add anything</p>
     <form method="post" action="/users/{{ $user->id }}">
         @method('PUT')
         @csrf

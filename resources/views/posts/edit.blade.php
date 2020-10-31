@@ -1,11 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1>Welcome to the post editor!</h1>
-
-    <h2>{{ $post->title }}</h2>
+    <h1>Edit "{{ $post->title }}"</h1>
     <img class="editPostImg" src="{{ $post->img }}" alt="{{ $post->img }}" />
-    <h2></h2>
+    <hr />
     <form method="post" action="/posts/{{ $post->id }}">
         @method('PUT')
         @csrf
