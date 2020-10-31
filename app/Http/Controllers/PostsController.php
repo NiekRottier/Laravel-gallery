@@ -63,8 +63,6 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-
-        $user = User::whereId($post->user_id)->first();
         $this->authorize('editPost', $post);
 
         return view('posts.edit', [

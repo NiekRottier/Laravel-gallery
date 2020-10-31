@@ -40,11 +40,13 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $allUsers = User::all();
+        $selectedUser = User::findOrFail($id);
         $posts = Post::whereUserId($id)->get();
 
         return view('users.user', [
-            'selectedUser' => $user,
+            'allUsers' => $allUsers,
+            'selectedUser' => $selectedUser,
             'posts' => $posts
         ]);
     }
@@ -52,6 +54,8 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all()->sortByDesc('created_at');
+
+        $this->authorize('seeAllUsers');
 
         return view('users.index', [
             'users' => $users

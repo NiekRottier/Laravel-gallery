@@ -4,6 +4,9 @@
     <h1>{{ $selectedUser->username }}</h1>
     @can('editUser', $selectedUser)
         <a href="/users/{{ $selectedUser->id }}/edit">Edit username</a>
+        @can('seeAllUsers')
+            <a href="/users">See all users (Admin)</a>
+        @endcan
     @endcan
 
     <div id="card-box">
