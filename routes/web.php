@@ -33,4 +33,9 @@ Route::prefix('users')->group(function() {
     Route::get('/{id}', [UsersController::class, 'show'])->name('user');
     Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('/{id}', [UsersController::class, 'update']);
+    Route::post('/login', [UsersController::class, 'authenticate']);
 });
+
+Route::get('/passwordError', function (){
+    return view('users.passwordError');
+})->name('passwordError');

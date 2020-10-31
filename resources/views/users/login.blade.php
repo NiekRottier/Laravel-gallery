@@ -1,21 +1,27 @@
-@extends('layout')
+@extends('layouts.main')
 
 @section('content')
     <h1>Login</h1>
 
-    <form method="post" action="/users">
+    <form method="post" action="/users/login">
         @csrf
 
         <div class="field">
-            <label for="title">Username</label>
+            <label for="title">Username
+            <input type="text" name="username" placeholder="Username here.."></label>
 
-            <input type="text" name="username" placeholder="Username here..">
+            @error('username')
+            <p class="errorText">{{ $errors->first('username') }}</p>
+            @enderror
         </div>
 
         <div class="field">
-            <label for="user_id">Password</label>
+            <label for="user_id">Password
+            <input type="password" name="password" placeholder="Password here.."></label>
 
-            <input type="password" name="password" placeholder="Password here..">
+            @error('password')
+            <p class="errorText">{{ $errors->first('password') }}</p>
+            @enderror
         </div>
 
         <button type="submit">Submit!</button>

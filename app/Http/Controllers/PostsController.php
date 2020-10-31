@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posts;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +11,7 @@ class PostsController extends Controller
 {
     public function show($id)
     {
-        $post = Posts::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         return view('posts.post', [
             'post' => $post
@@ -20,7 +20,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Posts::all()->sortByDesc('created_at');
+        $posts = Post::all()->sortByDesc('created_at');
 
         return view('home', [
             'posts' => $posts
@@ -32,22 +32,22 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             'title' => 'required|min:3|max:255',
             'descr' => 'nullable|max:255',
-            'img' => 'required|image|max:8000|dimensions:min_width=200,min_height=200',
+            'img' => 'required|ends_with:.jpg',
             'user_id' => 'required'
         ]);
 
-        $post = new Posts();
+        $post = new Post();
 
-        $post->title = request('title');
-        $post->descr = request('descr');
-        $post->img = request('img');
+        $post->title = $request->input('title');
+        $post->descr = $request->input('descr');
+        $post->img = $request->input('img');
 
-        $post->user_id = request('user_id');
+        $post->user_id = $request->input('user_id');
 
         $post->save();
 
@@ -56,7 +56,7 @@ class PostsController extends Controller
 
     public function edit($id)
     {
-        $post = Posts::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         return view('posts.edit', [
             'post' => $post
@@ -71,7 +71,7 @@ class PostsController extends Controller
             'user_id' => 'required'
         ]);
 
-        $post = Posts::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         $post->title = request('title');
         $post->descr = request('descr');

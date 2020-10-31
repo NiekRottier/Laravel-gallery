@@ -1,4 +1,4 @@
-@extends('form')
+@extends('layouts.main')
 
 @section('content')
     <h1>Edit "{{ $user->username }}"</h1>
@@ -13,7 +13,7 @@
             </label>
 
             @error('username')
-                <p class="errorText">{{ $errors->first('username') }}</p>
+            <p class="errorText">{{ $errors->first('username') }}</p>
             @enderror
         </div>
 
@@ -23,7 +23,7 @@
             </label>
 
             @error('password')
-                <p class="errorText">{{ $errors->first('password') }}</p>
+            <p class="errorText">{{ $errors->first('password') }}</p>
             @enderror
         </div>
 
@@ -33,7 +33,7 @@
             </label>
 
             @error('newPassword')
-                <p class="errorText">{{ $errors->first('newPassword') }}</p>
+            <p class="errorText">{{ $errors->first('newPassword') }}</p>
             @enderror
         </div>
 
@@ -43,7 +43,7 @@
             </label>
 
             @error('repeatNewPassword')
-                <p class="errorText">{{ $errors->first('repeatNewPassword') }}</p>
+            <p class="errorText">{{ $errors->first('repeatNewPassword') }}</p>
             @enderror
         </div>
 

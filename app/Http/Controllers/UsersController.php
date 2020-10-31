@@ -2,23 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
     public function login()
     {
-        $users = Users::all()->sortByDesc('created_at');
+        return view('users.login');
+    }
 
-        return view('users.login', [
-            'users' => $users
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
         ]);
+
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect('/');
+        } else {
+            return redirect('/passwordError');
+        }
     }
 
     public function show($id)
     {
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
 
         return view('users.user', [
             'user' => $user
@@ -27,7 +41,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = Users::all()->sortByDesc('created_at');
+        $users = User::all()->sortByDesc('created_at');
 
         return view('users.index', [
             'users' => $users
@@ -39,18 +53,19 @@ class UsersController extends Controller
         return view('users.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             'username' => 'required|min:3|max:255|unique:users',
             'password' => 'required|min:8|max:255',
             'repeatPassword' => 'required|min:8|max:255|same:password'
         ]);
 
-        $user = new Users();
+        $user = new User();
+        $hashedPassword = Hash::make($request->input('password'));
 
-        $user->username = request('username');
-        $user->password = request('password');
+        $user->username = $request->input('username');
+        $user->password = $hashedPassword;
 
         $user->save();
 
@@ -59,34 +74,38 @@ class UsersController extends Controller
 
     public function edit($user_id)
     {
-        $user = Users::findOrFail($user_id);
+        $user = User::findOrFail($user_id);
 
         return view('users.edit', [
             'user' => $user
         ]);
     }
 
-    public function update($user_id)
+    public function update(Request $request, $user_id)
     {
-        $user = Users::findOrFail($user_id);
-        $oldPassword = $user->password;
+        $user = User::findOrFail($user_id);
 
-        request()->validate([
+        $request->validate([
             'username' => 'required|min:3|max:255|unique:users,username,' . $user->id,
             'password' => 'required|min:8|max:255',
             'newPassword' => 'nullable|min:8|max:255',
-            'repeatNewPassword' => 'nullable|min:8|max:255|same:newPassword',
+            'repeatNewPassword' => 'nullable|min:8|max:255|same:newPassword'
         ]);
 
         $user->username = request('username');
-        if(request('newPassword') !== null){
-            $user->password = request('newPassword');
+        if ($request->filled('newPassword')){
+            $hashedNewPassword = Hash::make($request->input('newPassword'));
+            $user->password = $hashedNewPassword;
         }
 
-        if (request('password') == $oldPassword){ $user->save(); } // NEEDS TO BE CHANGED TO A GOOD CHECK
+        $credentials = $request->only('username', 'password');
 
-
-        return redirect('/users/' . $user->id);
+        if (Auth::attempt($credentials)) {
+            $user->save();
+            return redirect('/users/' . $user->id);
+        } else {
+            return redirect('/passwordError');
+        }
     }
 
     public function destroy()

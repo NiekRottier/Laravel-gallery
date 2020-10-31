@@ -1,4 +1,4 @@
-@extends('form')
+@extends('layouts.form')
 
 @section('content')
     <h1>Create account</h1>

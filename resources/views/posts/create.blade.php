@@ -1,4 +1,4 @@
-@extends('form')
+@extends('layouts.form')
 
 @section('content')
     <h1>Create a post!</h1>
@@ -27,14 +27,24 @@
         </div>
 
         <div class="field">
-            <label class="@error('img') errorField @enderror" id="fileUpload" for="img"><i class="fas fa-upload"></i> Upload image
-                <input type="file" accept="image/*" name="img" id="img" />
+            <label for="img">Image
+                <input class="@error('img') errorField @enderror" type="text" name="img" placeholder="Image URL here.." />
             </label>
 
             @error('img')
-                <p class="errorText">{{ $errors->first('img') }}</p>
+            <p class="errorText">{{ $errors->first('img') }}</p>
             @enderror
         </div>
+
+{{--        <div class="field">--}}
+{{--            <label class="@error('img') errorField @enderror" id="fileUpload" for="img"><i class="fas fa-upload"></i> Upload image--}}
+{{--                <input type="file" accept="image/*" name="img" id="img" />--}}
+{{--            </label>--}}
+
+{{--            @error('img')--}}
+{{--                <p class="errorText">{{ $errors->first('img') }}</p>--}}
+{{--            @enderror--}}
+{{--        </div>--}}
 
         <div class="field">
             <label for="user_id">User ID&#42;

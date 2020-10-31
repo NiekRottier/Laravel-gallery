@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.main')
 
 @section('content')
     <h1>{{ $user->username }}</h1>

@@ -1,4 +1,4 @@
-@extends('form')
+@extends('layouts.form')
 
 @section('content')
     <h1>Welcome to the post editor!</h1>
