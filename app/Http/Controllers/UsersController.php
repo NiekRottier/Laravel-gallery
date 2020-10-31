@@ -86,26 +86,13 @@ class UsersController extends Controller
         $user = User::findOrFail($user_id);
 
         $request->validate([
-            'username' => 'required|min:3|max:255|unique:users,username,' . $user->id,
-            'password' => 'required|min:8|max:255',
-            'newPassword' => 'nullable|min:8|max:255',
-            'repeatNewPassword' => 'nullable|min:8|max:255|same:newPassword'
+            'username' => 'required|min:3|max:255|unique:users,username,' . $user->id
         ]);
 
-        $user->username = request('username');
-        if ($request->filled('newPassword')){
-            $hashedNewPassword = Hash::make($request->input('newPassword'));
-            $user->password = $hashedNewPassword;
-        }
+        $user->username = $request->input('username');
 
-        $credentials = $request->only('username', 'password');
-
-        if (Auth::attempt($credentials)) {
-            $user->save();
-            return redirect('/users/' . $user->id);
-        } else {
-            return redirect('/passwordError');
-        }
+        $user->save();
+        return redirect('/users/' . $user->id);
     }
 
     public function destroy()
