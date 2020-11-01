@@ -218,6 +218,8 @@ form input[type=checkbox] {
 
 #search label[for=kitten],
 #search label[for=bunny],
+#search label[for=chicken],
+#search label[for=pinguin],
 #search label[for=panda] {
   color: white;
   font-family: "Montserrat", sans-serif;

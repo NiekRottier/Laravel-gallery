@@ -11,6 +11,10 @@
                 <input type="radio" id="kitten" name="tags" value="kitten"><br></label>
             <label for="bunny">Bunny
                 <input type="radio" id="bunny" name="tags" value="bunny"><br></label>
+            <label for="chicken">Chicken
+                <input type="radio" id="chicken" name="tags" value="chicken"><br></label>
+            <label for="pinguin">Pinguin
+                <input type="radio" id="pinguin" name="tags" value="pinguin"><br></label>
             <label for="panda">Panda
                 <input type="radio" id="other" name="tags" value="panda"></label>
         </div>
