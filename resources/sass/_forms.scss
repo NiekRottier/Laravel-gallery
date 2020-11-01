@@ -101,10 +101,11 @@ form{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
     padding-top: 3vh;
 
-    input{
+    input[type=search]{
         display: inline;
         width: 75%;
         height: 5vh;
@@ -115,6 +116,22 @@ form{
         border: solid 1px #6e0000;
         border-radius: 6px 0 0 6px;
 
+        color: $textColor;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 200;
+        font-size: 1rem;
+    }
+
+    div{
+        width: 30vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 1vh;
+    }
+
+    label[for=kitten], label[for=bunny], label[for=panda]{
         color: $textColor;
         font-family: 'Montserrat', sans-serif;
         font-weight: 200;

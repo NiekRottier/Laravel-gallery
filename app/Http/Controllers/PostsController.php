@@ -93,12 +93,25 @@ class PostsController extends Controller
     public function search(Request $request)
     {
         $request->validate([
-            'search' => 'max:255'
+            'search' => 'max:255',
+            'tags' => 'nullable'
         ]);
 
         $search = $request->input('search');
+        $tags = $request->input('tags');
 
-        $posts = Post::where('title', 'LIKE', '%'.$search.'%')->latest()->get();
+        if ($tags !== null){
+            $posts = Post::where('title', 'LIKE', '%'.$search.'%')
+                ->where('tags', $tags)
+                ->where('active', 1)
+                ->latest()
+                ->get();
+        } else {
+            $posts = Post::where('title', 'LIKE', '%'.$search.'%')
+                ->where('active', 1)
+                ->latest()
+                ->get();
+        }
 
         return view('home', [
             'posts' => $posts

@@ -5,6 +5,15 @@
         @csrf
         <input type="search" name="search" placeholder="Search for a title here..">
         <button type="submit">Search</button>
+
+        <div>
+            <label for="kitten">Kitten
+                <input type="radio" id="kitten" name="tags" value="kitten"><br></label>
+            <label for="bunny">Bunny
+                <input type="radio" id="bunny" name="tags" value="bunny"><br></label>
+            <label for="panda">Panda
+                <input type="radio" id="other" name="tags" value="panda"></label>
+        </div>
     </form>
     @error('search')
     <p class="errorText">{{ $errors->first('search') }}</p>

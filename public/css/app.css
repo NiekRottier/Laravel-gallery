@@ -189,10 +189,11 @@ form input[type=checkbox] {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding-top: 3vh;
 }
 
-#search input {
+#search input[type=search] {
   display: inline;
   width: 75%;
   height: 5vh;
@@ -200,6 +201,24 @@ form input[type=checkbox] {
   background-color: #130f47;
   border: solid 1px #6e0000;
   border-radius: 6px 0 0 6px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+#search div {
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1vh;
+}
+
+#search label[for=kitten],
+#search label[for=bunny],
+#search label[for=panda] {
   color: white;
   font-family: "Montserrat", sans-serif;
   font-weight: 200;

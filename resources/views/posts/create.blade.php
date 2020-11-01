@@ -43,10 +43,6 @@
             <input type="radio" id="bunny" name="tags" value="bunny"><br></label>
             <label for="panda">Panda
             <input type="radio" id="other" name="tags" value="panda"></label>
-
-            @error('tags')
-            <p class="errorText">{{ $errors->first('tags') }}</p>
-            @enderror
         </div>
 
         <button type="submit">Create post!</button>
