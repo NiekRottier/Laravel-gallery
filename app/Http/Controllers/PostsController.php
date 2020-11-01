@@ -41,7 +41,7 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required|min:3|max:255',
             'descr' => 'nullable|max:255',
-            'img' => 'required|ends_with:.jpg,.jpeg,.png,.gif',
+            'img' => 'required|ends_with:.jpg,.jpeg,.png,.gif'
         ]);
 
         $post = new Post();
@@ -49,6 +49,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->descr = $request->input('descr');
         $post->img = $request->input('img');
+        $post->tags = $request->input('tags');
 
         $post->user_id = Auth::id();
 
