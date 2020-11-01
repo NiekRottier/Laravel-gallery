@@ -19,8 +19,8 @@
         <ul id="nav">
             <li><a class="{{ Request::path() === '/' ? 'current-page' : '' }}" href="{{ route('home') }}">Home</a></li>
             @if(Auth::check())
-                <li><a href="{{ route('posts.create') }}">Create Post</a></li>
-                <li><a href="/users/{{ Auth::id() }}">Profile</a></li>
+                <li><a class="{{ Request::path() === 'posts/create' ? 'current-page' : '' }}" href="{{ route('posts.create') }}">Create Post</a></li>
+                <li><a class="{{ Request::path() === 'users/'.Auth::id() ? 'current-page' : '' }}" href="/users/{{ Auth::id() }}">Profile</a></li>
                 <li><a href="/users/logout">Logout</a></li>
             @else
                 <li><a class="{{ Request::path() === 'users/login' ? 'current-page' : '' }}" href="{{ route('users.login') }}">Login</a></li>

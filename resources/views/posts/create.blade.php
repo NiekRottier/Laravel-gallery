@@ -1,4 +1,4 @@
-@extends('layouts.form')
+@extends('layouts.main')
 
 @section('content')
     <h1>Create a post!</h1>
