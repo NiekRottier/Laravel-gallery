@@ -23,7 +23,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::where('active', 1)
-            ->orderByDesc('created_at')
+            ->latest()
             ->get();
 
         return view('home', [
@@ -86,6 +86,21 @@ class PostsController extends Controller
 
         $post->save();
 
-        redirect('/posts/' . $post->id);
+        return redirect('/posts/' . $post->id);
+    }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search' => 'max:255'
+        ]);
+
+        $search = $request->input('search');
+
+        $posts = Post::where('title', 'LIKE', '%'.$search.'%')->latest()->get();
+
+        return view('home', [
+            'posts' => $posts
+        ]);
     }
 }

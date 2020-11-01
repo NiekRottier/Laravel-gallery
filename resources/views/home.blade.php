@@ -1,6 +1,14 @@
-@extends ('layouts.main')
+@extends('layouts.main')
 
-@section ('content')
+@section('content')
+    <form id="search" method="post" action="/">
+        @csrf
+        <input type="search" name="search" placeholder="Search for a title here..">
+        <button type="submit">Search</button>
+    </form>
+    @error('search')
+    <p class="errorText">{{ $errors->first('search') }}</p>
+    @enderror
 
     <div id="card-box">
         @foreach($posts as $post)

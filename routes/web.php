@@ -16,6 +16,7 @@ use App\Http\Controllers\UsersController;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
+Route::post('/', [PostsController::class, 'search']);
 
 Route::prefix('posts')->group(function() {
     Route::post('/', [PostsController::class, 'store']);
