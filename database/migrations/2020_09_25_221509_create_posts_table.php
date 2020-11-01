@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('descr')->nullable();
             $table->string('img');
-            $table->integer('rating')->default(1);
             $table->text('tags')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();

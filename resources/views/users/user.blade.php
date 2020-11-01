@@ -25,10 +25,6 @@
                         <input type="hidden" name="post_id" value="{{$post->id}}">
                         <input type="hidden" name="active" value="@if($post->active) 0 @else 1 @endif">
                         <button type="submit">@if($post->active) On @else Off @endif</button>
-
-                        @error('active')
-                        <p class="errorText">{{ $errors->first('active') }}</p>
-                        @enderror
                     </form>
                 @endcan
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,9 +15,11 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+        $likes = Like::where('post_id', $id)->get()->count();
 
         return view('posts.post', [
-            'post' => $post
+            'post' => $post,
+            'likes' => $likes
         ]);
     }
 
@@ -97,22 +100,25 @@ class PostsController extends Controller
             'tags' => 'nullable'
         ]);
 
+        // Put search inputs in variables
         $search = $request->input('search');
         $tags = $request->input('tags');
 
-        if ($tags !== null){
+        // Different queries when filtering with or without tags
+        if ($tags == null){
             $posts = Post::where('title', 'LIKE', '%'.$search.'%')
-                ->where('tags', $tags)
                 ->where('active', 1)
                 ->latest()
                 ->get();
         } else {
             $posts = Post::where('title', 'LIKE', '%'.$search.'%')
+                ->where('tags', $tags)
                 ->where('active', 1)
                 ->latest()
                 ->get();
         }
 
+        // Return view with all found posts
         return view('home', [
             'posts' => $posts
         ]);

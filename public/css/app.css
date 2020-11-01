@@ -234,6 +234,26 @@ form input[type=checkbox] {
   border-radius: 0 6px 6px 0;
 }
 
+#vote {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2vh;
+  visibility: hidden;
+}
+
+#vote #like {
+  color: #ca1d1d;
+  font-size: 4rem;
+  visibility: visible;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

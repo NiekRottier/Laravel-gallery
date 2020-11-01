@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LikesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
@@ -21,9 +22,10 @@ Route::post('/', [PostsController::class, 'search']);
 Route::prefix('posts')->group(function() {
     Route::post('/', [PostsController::class, 'store']);
     Route::get('/create', [PostsController::class, 'create'])->name('posts.create')->middleware('auth');
-    Route::get('/{id}', [PostsController::class, 'show'])->name('post');
     Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('post.edit')->middleware('auth');
+    Route::get('/{id}', [PostsController::class, 'show'])->name('post');
     Route::put('/{id}', [PostsController::class, 'update']);
+    Route::post('/{id}', [LikesController::class, 'store']);
 });
 
 Route::prefix('users')->group(function() {

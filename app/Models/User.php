@@ -26,6 +26,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @mixin \Eloquent
+ * @property int $admin
+ * @property string|null $remember_token
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  */
 class User extends \Illuminate\Foundation\Auth\User
 {

@@ -15,9 +15,6 @@
                 <input type="radio" id="other" name="tags" value="panda"></label>
         </div>
     </form>
-    @error('search')
-    <p class="errorText">{{ $errors->first('search') }}</p>
-    @enderror
 
     <div id="card-box">
         @foreach($posts as $post)
