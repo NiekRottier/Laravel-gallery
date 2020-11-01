@@ -21,8 +21,8 @@ Route::post('/', [PostsController::class, 'search']);
 
 Route::prefix('posts')->group(function() {
     Route::post('/', [PostsController::class, 'store']);
-    Route::get('/create', [PostsController::class, 'create'])->name('posts.create')->middleware('auth');
-    Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('post.edit')->middleware('auth');
+    Route::get('/create', [PostsController::class, 'create'])->name('posts.create')->middleware('auth', 'throttle:60,1');
+    Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('post.edit')->middleware('auth', 'throttle:60,1');
     Route::get('/{id}', [PostsController::class, 'show'])->name('post');
     Route::put('/{id}', [PostsController::class, 'update']);
     Route::post('/{id}', [LikesController::class, 'store']);
@@ -33,11 +33,11 @@ Route::prefix('users')->group(function() {
     Route::post('/login', [UsersController::class, 'authenticate']);
     Route::get('/logout', [UsersController::class, 'logout']);
 
-    Route::get('/', [UsersController::class, 'index'])->name('users.index')->middleware('auth');
+    Route::get('/', [UsersController::class, 'index'])->name('users.index')->middleware('auth', 'throttle:60,1');
     Route::post('/', [UsersController::class, 'store']);
     Route::get('/create', [UsersController::class, 'create'])->name('users.create');
-    Route::get('/{id}', [UsersController::class, 'show'])->name('user')->middleware('auth');
-    Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit')->middleware('auth');
+    Route::get('/{id}', [UsersController::class, 'show'])->name('user')->middleware('auth', 'throttle:60,1');
+    Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit')->middleware('auth', 'throttle:60,1');
     Route::put('/{id}', [UsersController::class, 'update']);
     Route::post('/{id}', [UsersController::class, 'activePost'])->name('users.activePost');
 });
