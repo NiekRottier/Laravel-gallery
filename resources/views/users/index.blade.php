@@ -7,8 +7,8 @@
     <hr />
     @foreach($users as $user)
         <div>
-            <h3>Username: {{ $user->title }}</h3>
-            <p>ID: {{ $user->user_id }}</p>
+            <h3>Username: {{ $user->username }}</h3>
+            <p>ID: {{ $user->id }}</p>
             <hr />
         </div>
     @endforeach
