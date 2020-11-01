@@ -8,7 +8,7 @@
 
         <div class="field">
             <label for="title">Username
-            <input type="text" name="username" placeholder="Username here.."></label>
+            <input class="@error('username') errorField @enderror" type="text" name="username" placeholder="Username here.."></label>
 
             @error('username')
             <p class="errorText">{{ $errors->first('username') }}</p>
@@ -17,7 +17,7 @@
 
         <div class="field">
             <label for="user_id">Password
-            <input type="password" name="password" placeholder="Password here.."></label>
+            <input class="@error('username') errorField @enderror" type="password" name="password" placeholder="Password here.."></label>
 
             @error('password')
             <p class="errorText">{{ $errors->first('password') }}</p>

@@ -36,6 +36,7 @@ Route::prefix('users')->group(function() {
     Route::get('/{id}', [UsersController::class, 'show'])->name('user')->middleware('auth');
     Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('users.edit')->middleware('auth');
     Route::put('/{id}', [UsersController::class, 'update']);
+    Route::post('/{id}', [UsersController::class, 'activePost'])->name('users.activePost');
 });
 
 Route::get('/passwordError', function (){

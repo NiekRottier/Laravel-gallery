@@ -22,7 +22,9 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::all()->sortByDesc('created_at');
+        $posts = Post::where('active', 1)
+            ->orderByDesc('created_at')
+            ->get();
 
         return view('home', [
             'posts' => $posts
@@ -85,10 +87,5 @@ class PostsController extends Controller
         $post->save();
 
         redirect('/posts/' . $post->id);
-    }
-
-    public function destroy()
-    {
-
     }
 }

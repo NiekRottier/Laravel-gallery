@@ -17,10 +17,11 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('title');
-            $table->text('descr');
+            $table->text('descr')->nullable();
             $table->string('img');
             $table->integer('rating')->default(1);
             $table->text('tags')->nullable();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

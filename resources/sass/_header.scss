@@ -23,10 +23,11 @@ header{
     #nav{
         display: flex;
         justify-content: space-between;
-        width: 25%;
+        min-width: fit-content;
 
         li{
             display: inline;
+            margin-left: 5vw;
             text-decoration: none;
 
             .current-page{

@@ -48,5 +48,12 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
+
+        Gate::define('editPosts', function (User $user, Post $post)
+        {
+            if (Auth::id() === $post->user_id){
+                return true;
+            }
+        });
     }
 }

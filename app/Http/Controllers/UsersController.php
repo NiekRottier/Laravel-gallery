@@ -10,34 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    public function login()
-    {
-        return view('users.login');
-    }
-
-    public function authenticate(Request $request)
-    {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-
-        $credentials = $request->only('username', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect('/');
-        } else {
-            return redirect('/passwordError');
-        }
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-
-        return redirect('/');
-    }
-
     public function show($id)
     {
         $allUsers = User::all();
@@ -110,8 +82,46 @@ class UsersController extends Controller
         return redirect('/users/' . $user->id);
     }
 
-    public function destroy()
+    public function login()
     {
+        return view('users.login');
+    }
 
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect('/');
+        } else {
+            return redirect('/passwordError');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
+    }
+
+    public function activePost(Request $request, $id)
+    {
+        $request->validate([
+            'active' => 'required'
+        ]);
+
+        $post_id = $request->input('post_id');
+        $post = Post::whereId($post_id)->first();
+
+        $post->active = $request->input('active');
+        $post->save();
+
+        return redirect('/users/' . Auth::id());
     }
 }
